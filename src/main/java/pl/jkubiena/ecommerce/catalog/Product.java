@@ -1,4 +1,4 @@
-package pl.jkubiena.ecommerce;
+package pl.jkubiena.ecommerce.catalog;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -27,4 +27,14 @@ public class Product {
     public void changePrice(BigDecimal price) {
         this.price = price;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+
 }

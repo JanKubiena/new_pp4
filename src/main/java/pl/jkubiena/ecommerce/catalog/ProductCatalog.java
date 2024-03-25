@@ -1,4 +1,4 @@
-package pl.jkubiena.ecommerce;
+package pl.jkubiena.ecommerce.catalog;
 
 import java.math.BigDecimal;
 import java.util.*;

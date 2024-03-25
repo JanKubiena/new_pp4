@@ -1,11 +1,12 @@
-package pl.jkubiena.ecommerce;
+package pl.jkubiena.ecommerce.catalog;
 
 import org.junit.jupiter.api.Test;
+import pl.jkubiena.ecommerce.catalog.Product;
+import pl.jkubiena.ecommerce.catalog.ProductCatalog;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.*;
 
 public class ProductCatalogTest {
