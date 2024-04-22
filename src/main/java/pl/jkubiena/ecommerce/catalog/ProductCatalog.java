@@ -5,13 +5,16 @@ import java.util.*;
 
 public class ProductCatalog {
     private ArrayList<Product> products;
+    ArrayListProductStorage arrayListProductStorage;
 
     public ProductCatalog() {
         this.products = new ArrayList<>();
+        this.arrayListProductStorage = new ArrayListProductStorage();
     }
 
     public List<Product> allProducts() {
         return Collections.unmodifiableList(products);
+        return arrayListProductStorage.allProducts();
     }
 
     public String addProduct(String name, String description) {
@@ -20,6 +23,7 @@ public class ProductCatalog {
         Product newProduct = new Product(id, name, description);
 
         products.add(newProduct);
+        arrayListProductStorage.addProduct(newProduct);
 
         return id.toString();
     }
@@ -29,6 +33,7 @@ public class ProductCatalog {
                 .filter(product -> product.getId().equals(id))
                 .findFirst()
                 .get();
+        return arrayListProductStorage.getProductBy(id);
     }
 
     public void changePrice(String id, BigDecimal price) {
