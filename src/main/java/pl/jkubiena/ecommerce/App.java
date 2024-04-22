@@ -3,6 +3,7 @@ package pl.jkubiena.ecommerce;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import pl.jkubiena.ecommerce.catalog.ArrayListProductStorage;
 import pl.jkubiena.ecommerce.catalog.ProductCatalog;
 
 @SpringBootApplication
@@ -15,7 +16,7 @@ public class App {
 
     @Bean
     ProductCatalog createMyProductCatalog() {
-        ProductCatalog productCatalog = new ProductCatalog();
+        ProductCatalog productCatalog = new ProductCatalog(new ArrayListProductStorage());
         productCatalog.addProduct("Legoset 9231", "Nice One");
 
         return productCatalog;

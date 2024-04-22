@@ -4,17 +4,14 @@ import java.math.BigDecimal;
 import java.util.*;
 
 public class ProductCatalog {
-    private ArrayList<Product> products;
-    ArrayListProductStorage arrayListProductStorage;
+    ProductStorage productStorage;
 
-    public ProductCatalog() {
-        this.products = new ArrayList<>();
-        this.arrayListProductStorage = new ArrayListProductStorage();
+    public ProductCatalog(ProductStorage productStorage) {
+        this.productStorage = productStorage;
     }
 
     public List<Product> allProducts() {
-        return Collections.unmodifiableList(products);
-        return arrayListProductStorage.allProducts();
+        return productStorage.allProducts();
     }
 
     public String addProduct(String name, String description) {
@@ -22,18 +19,13 @@ public class ProductCatalog {
 
         Product newProduct = new Product(id, name, description);
 
-        products.add(newProduct);
-        arrayListProductStorage.addProduct(newProduct);
+        productStorage.addProduct(newProduct);
 
         return id.toString();
     }
 
     public Product getProductBy(String id) {
-        return products.stream()
-                .filter(product -> product.getId().equals(id))
-                .findFirst()
-                .get();
-        return arrayListProductStorage.getProductBy(id);
+        return productStorage.getProductBy(id);
     }
 
     public void changePrice(String id, BigDecimal price) {
