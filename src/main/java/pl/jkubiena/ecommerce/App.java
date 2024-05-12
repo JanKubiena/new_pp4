@@ -18,6 +18,8 @@ public class App {
     ProductCatalog createMyProductCatalog() {
         ProductCatalog productCatalog = new ProductCatalog(new ArrayListProductStorage());
         productCatalog.addProduct("Legoset 9231", "Nice One");
+        productCatalog.addProduct("Legoset 7832", "Nice Two");
+        productCatalog.addProduct("Legoset 1046", "Nice Three");
 
         return productCatalog;
     }
