@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import pl.jkubiena.ecommerce.catalog.ArrayListProductStorage;
 import pl.jkubiena.ecommerce.catalog.ProductCatalog;
+import pl.jkubiena.ecommerce.sales.SalesFacade;
 
 @SpringBootApplication
 public class App {
@@ -22,5 +23,10 @@ public class App {
         productCatalog.addProduct("Legoset 1046", "Nice Three");
 
         return productCatalog;
+    }
+
+    @Bean
+    SalesFacade createSales(){
+        return new SalesFacade();
     }
 }
