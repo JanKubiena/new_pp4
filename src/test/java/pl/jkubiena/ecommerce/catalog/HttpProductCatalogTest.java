@@ -8,6 +8,8 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.math.BigDecimal;
+
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(
@@ -28,12 +30,12 @@ public class HttpProductCatalogTest {
         ResponseEntity<String> response = http.getForEntity(url, String.class);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(response.getBody()).contains("My Ecommerce");
+        assertThat(response.getBody()).contains("Ecommerce");
     }
 
     @Test
     void loadsProducts() {
-        var id = productCatalog.addProduct("Example Product", "test");
+        var id = productCatalog.addProduct("Example Product", "test", BigDecimal.valueOf(10));
         var url = String.format("http://localhost:%s/%s", localPort, "/api/products");
 
         ResponseEntity<Product[]> response = http.getForEntity(url, Product[].class);

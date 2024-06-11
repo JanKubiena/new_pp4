@@ -1,11 +1,11 @@
 package pl.jkubiena.ecommerce.playground;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestClassOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeEach;
 import pl.jkubiena.ecommerce.catalog.Product;
 
 import java.math.BigDecimal;
@@ -42,6 +42,8 @@ public class JdbcPlaygroundTest {
 
         assert currentDate.contains("2024");
     }
+
+
     @Test
     void itCountsProductsWhenNoProducts() {
         var countSql = "select count(*) from `product_catalog__products`";
@@ -69,8 +71,8 @@ public class JdbcPlaygroundTest {
         var insertSql = "insert into `product_catalog__products` (id, name, price)" +
                 "values (?,?,?)" +
                 ";";
-        var product = new Product(UUID.randomUUID(), "my product", "xyz");
-        product.changePrice(BigDecimal.valueOf(10));
+        var product = new Product(UUID.randomUUID(), "my product", "xyz", BigDecimal.valueOf(10));
+
 
         jdbcTemplate.update(insertSql, product.getId(), product.getName(), product.getPrice());
 
@@ -98,9 +100,10 @@ public class JdbcPlaygroundTest {
                     var myResult = new Product(
                             UUID.randomUUID(),
                             rs.getString("name"),
-                            rs.getString("name")
+                            rs.getString("name"),
+                            rs.getBigDecimal("price")
                     );
-                    myResult.changePrice(BigDecimal.valueOf(rs.getDouble("price")));
+
 
                     return myResult;
                 }
@@ -108,5 +111,6 @@ public class JdbcPlaygroundTest {
 
         assertThat(myProduct.getName()).isEqualTo("my 1 product");
     }
+
 
 }
