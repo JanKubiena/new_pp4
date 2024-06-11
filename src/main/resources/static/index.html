@@ -5,10 +5,27 @@
     <title>My Ecommerce</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
+<header>
+    <div class="offer">
+        <div>
+            <span>Total:</span>
+            <span id="offer__total">0.0</span>
+        </div>
+        <div>
+            <span>items count:</span>
+            <span id="offer__items-count">0</span>
+        </div>
+        <form id="checkout">
+            <input name="first_name" placeholder="Jan">
+            <input name="lastname_name" placeholder="Kowalski">
+            <input name="email" type="email" placeholder="xyz@gmail.com">
+            <button type="submit">Accept offer</button>
+        </form>
+    </div>
+</header>
 <body>
-    <h1>My Ecommerce</h1>
-    <ul id="productsList" class="productsList"></ul>
-    <p>src/main/resources/static/index.html</p>
+<h1>My Ecommerce</h1>
+<ul id="productsList" class="productsList"></ul>
     <script type="text/javascript" src="/js/main.js"></script>
 </body>
 </html>
